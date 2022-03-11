@@ -107,6 +107,7 @@
 		};
 	};
 
+/*
 	dsi_sharp_4k_dsc_video_display: qcom,dsi-display@0 {
 		compatible = "qcom,dsi-display";
 		label = "dsi_sharp_4k_dsc_video_display";
@@ -527,6 +528,7 @@
 		ibb-supply = <&ibb_regulator>;
 	};
 
+*/
 	ext_dsi_bridge_display: qcom,dsi-display@19 {
 		compatible = "qcom,dsi-display";
 		label = "ext_dsi_bridge_display";
@@ -566,7 +568,7 @@
 };
 
 &sde_dp {
-	qcom,dp-usbpd-detection = <&pmi8998_pdphy>;
+	// qcom,dp-usbpd-detection = <&pmi8998_pdphy>;
 	qcom,ext-disp = <&ext_disp>;
 
 	pinctrl-names = "mdss_dp_active", "mdss_dp_sleep";

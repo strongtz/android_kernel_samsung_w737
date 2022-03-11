@@ -38,7 +38,7 @@
 		mbox-names = "apps_rsc", "disp_rsc";
 		mboxes = <&apps_rsc 0 &disp_rsc 0>;
 
-	/*RSCs*/
+		/*RSCs*/
 		rsc_apps: rsc-apps {
 			cell-id = <MSM_BUS_RSC_APPS>;
 			label = "apps_rsc";
@@ -53,7 +53,7 @@
 			qcom,req_state = <3>;
 		};
 
-	/*BCMs*/
+		/*BCMs*/
 		bcm_acv: bcm-acv {
 			cell-id = <MSM_BUS_BCM_ACV>;
 			label = "ACV";
@@ -685,12 +685,12 @@
 			qcom,bus-dev = <&fab_aggre2_noc>;
 			qcom,ap-owned;
 			qcom,prio = <2>;
-			qcom,node-qos-clks {
-				clocks =
-				<&clock_gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
-				clock-names =
-				"clk-usb3-prim-axi-no-rate";
-			};
+			// qcom,node-qos-clks {
+			// 	clocks =
+			// 	<&clock_gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
+			// 	clock-names =
+			// 	"clk-usb3-prim-axi-no-rate";
+			// };
 		};
 
 		mas_xm_usb3_1: mas-xm-usb3-1 {
@@ -703,12 +703,12 @@
 			qcom,bus-dev = <&fab_aggre2_noc>;
 			qcom,ap-owned;
 			qcom,prio = <2>;
-			qcom,node-qos-clks {
-				clocks =
-				<&clock_gcc GCC_AGGRE_USB3_SEC_AXI_CLK>;
-				clock-names =
-				"clk-usb3-sec-axi-no-rate";
-			};
+			// qcom,node-qos-clks {
+			// 	clocks =
+			// 	<&clock_gcc GCC_AGGRE_USB3_SEC_AXI_CLK>;
+			// 	clock-names =
+			// 	"clk-usb3-sec-axi-no-rate";
+			// };
 		};
 
 		mas_qxm_camnoc_hf0_uncomp: mas-qxm-camnoc-hf0-uncomp {

@@ -47,7 +47,9 @@
 	msm_gpu: qcom,kgsl-3d0@5000000 {
 		label = "kgsl-3d0";
 		compatible = "qcom,kgsl-3d0", "qcom,kgsl-3d";
-		status = "ok";
+
+		status = "disabled";
+
 		reg = <0x5000000 0x40000>, <0x5061000 0x800>,
 			<0x509e000 0x1000>;
 		reg-names = "kgsl_3d0_reg_memory", "kgsl_3d0_cx_dbgc_memory",
@@ -327,6 +329,8 @@
 	gmu: qcom,gmu {
 		label = "kgsl-gmu";
 		compatible = "qcom,gpu-gmu";
+
+		status = "disabled";
 
 		reg = <0x506a000 0x30000>, <0xb200000 0x300000>;
 		reg-names = "kgsl_gmu_reg", "kgsl_gmu_pdc_reg";

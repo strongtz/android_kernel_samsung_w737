@@ -29,6 +29,8 @@
 		reg-names = "parf", "phy", "dm_core", "elbi",
 				"conf", "io", "bars";
 
+		status = "disabled";
+
 		#address-cells = <3>;
 		#size-cells = <2>;
 		ranges = <0x01000000 0x0 0x60200000 0x60200000 0x0 0x100000>,
@@ -283,6 +285,8 @@
 
 		reg-names = "parf", "phy", "dm_core", "elbi",
 				"conf", "io", "bars";
+
+		status = "disabled";
 
 		#address-cells = <3>;
 		#size-cells = <2>;

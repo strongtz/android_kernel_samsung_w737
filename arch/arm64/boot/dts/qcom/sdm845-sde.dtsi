@@ -21,6 +21,8 @@
 			"vbif_phys",
 			"regdma_phys";
 
+		status = "disabled";
+
 		clocks =
 			<&clock_gcc GCC_DISP_AHB_CLK>,
 			<&clock_gcc GCC_DISP_AXI_CLK>,
@@ -288,6 +290,8 @@
 		reg-names = "drv", "wrapper";
 		qcom,sde-rsc-version = <1>;
 
+		status = "disabled";
+
 		vdd-supply = <&mdss_core_gdsc>;
 		clocks = <&clock_dispcc DISP_CC_MDSS_RSCC_VSYNC_CLK>,
 			<&clock_dispcc DISP_CC_MDSS_RSCC_AHB_CLK>;
@@ -424,6 +428,9 @@
 		reg =   <0xae94000 0x400>,
 			<0xaf08000 0x4>;
 		reg-names = "dsi_ctrl", "disp_cc_base";
+
+		status = "disabled";
+
 		interrupt-parent = <&mdss_mdp>;
 		interrupts = <4 0>;
 		vdda-1p2-supply = <&pm8998_l26>;
@@ -460,6 +467,9 @@
 			<0xaf08000 0x4>;
 		reg-names = "dsi_ctrl", "disp_cc_base";
 		interrupt-parent = <&mdss_mdp>;
+
+		status = "disabled";
+
 		interrupts = <5 0>;
 		vdda-1p2-supply = <&pm8998_l26>;
 		clocks = <&clock_dispcc DISP_CC_MDSS_BYTE1_CLK>,
@@ -491,6 +501,9 @@
 		label = "dsi-phy-0";
 		cell-index = <0>;
 		reg = <0xae94400 0x7c0>;
+
+		status = "disabled";
+
 		reg-names = "dsi_phy";
 		gdsc-supply = <&mdss_core_gdsc>;
 		vdda-0p9-supply = <&pm8998_l1>;
@@ -526,6 +539,9 @@
 		reg = <0xae96400 0x7c0>;
 		reg-names = "dsi_phy";
 		gdsc-supply = <&mdss_core_gdsc>;
+
+		status = "disabled";
+
 		vdda-0p9-supply = <&pm8998_l1>;
 		qcom,platform-strength-ctrl = [55 03
 						55 03
@@ -559,6 +575,8 @@
 		gdsc-supply = <&mdss_core_gdsc>;
 		vdda-1p2-supply = <&pm8998_l26>;
 		vdda-0p9-supply = <&pm8998_l1>;
+
+		status = "disabled";
 
 		reg =	<0xae90000 0x0dc>,
 			<0xae90200 0x0c0>,

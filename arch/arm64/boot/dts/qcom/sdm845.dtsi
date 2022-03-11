@@ -1205,7 +1205,8 @@
 		reg = <0xad00000 0x10000>;
 		reg-names = "cc_base";
 		vdd_cx-supply = <&pm8998_s9_level>;
-		vdd_mx-supply = <&pm8998_s6_level>;
+		// vdd_mx-supply = <&pm8998_s6_level>;
+		vdd_mx-supply = <&pm8998_s9_level>;
 		qcom,cam_cc_csi0phytimer_clk_src-opp-handle = <&cam_csiphy0>;
 		qcom,cam_cc_csi1phytimer_clk_src-opp-handle = <&cam_csiphy1>;
 		qcom,cam_cc_csi2phytimer_clk_src-opp-handle = <&cam_csiphy2>;
@@ -1238,7 +1239,8 @@
 		reg = <0x5090000 0x9000>;
 		reg-names = "cc_base";
 		vdd_cx-supply = <&pm8998_s9_level>;
-		vdd_mx-supply = <&pm8998_s6_level>;
+		// vdd_mx-supply = <&pm8998_s6_level>;
+		vdd_mx-supply = <&pm8998_s9_level>;
 		qcom,gpu_cc_gmu_clk_src-opp-handle = <&gmu>;
 		#clock-cells = <1>;
 		#reset-cells = <1>;
@@ -1246,6 +1248,9 @@
 
 	clock_gfx: qcom,gfxcc@5090000 {
 		compatible = "qcom,gfxcc-sdm845";
+
+		status = "disabled";
+
 		reg = <0x5090000 0x9000>;
 		reg-names = "cc_base";
 		vdd_gfx-supply = <&pm8005_s1_level>;
@@ -1265,11 +1270,15 @@
 			<0x17d43000 0x1400>,
 			<0x17d45800 0x1400>;
 		reg-names = "osm_l3_base", "osm_pwrcl_base", "osm_perfcl_base";
-		vdd_l3_mx_ao-supply = <&pm8998_s6_level_ao>;
-		vdd_pwrcl_mx_ao-supply = <&pm8998_s6_level_ao>;
+		// vdd_l3_mx_ao-supply = <&pm8998_s6_level_ao>;
+		// vdd_pwrcl_mx_ao-supply = <&pm8998_s6_level_ao>;
+
+		vdd_l3_mx_ao-supply = <&pm8998_s9_level_ao>;
+		vdd_pwrcl_mx_ao-supply = <&pm8998_s9_level_ao>;
 
 		qcom,mx-turbo-freq = <1478400000 1689600000 3300000001>;
-		l3-devs = <&l3_cpu0 &l3_cpu4 &l3_cdsp &msm_gpu>;
+		// l3-devs = <&l3_cpu0 &l3_cpu4 &l3_cdsp &msm_gpu>;
+		l3-devs = <&l3_cpu0 &l3_cpu4 &l3_cdsp>;
 
 		clock-names = "xo_ao";
 		clocks = <&clock_rpmh RPMH_CXO_CLK_A>;
@@ -1544,7 +1553,8 @@
 		interrupts = <0 266 1>;
 		vdd_cx-supply = <&pm8998_s9_level>;
 		vdd_cx-voltage = <RPMH_REGULATOR_LEVEL_TURBO>;
-		vdd_mx-supply = <&pm8998_s6_level>;
+		// vdd_mx-supply = <&pm8998_s6_level>;
+		vdd_mx-supply = <&pm8998_s9_level>;
 		vdd_mx-uV = <RPMH_REGULATOR_LEVEL_TURBO>;
 		vdd_mss-supply = <&pm8005_s2_level>;
 		vdd_mss-uV = <RPMH_REGULATOR_LEVEL_TURBO>;
@@ -1727,7 +1737,8 @@
 		vdd_cx-supply = <&pm8998_s9_level>;
 		qcom,proxy-reg-names = "vdd_cx";
 		qcom,vdd_cx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
-		vdd_mx-supply = <&pm8998_s6_level>;
+		// vdd_mx-supply = <&pm8998_s6_level>;
+		vdd_mx-supply = <&pm8998_s9_level>;
 		vdd_mx-uV = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
 
 		clocks = <&clock_rpmh RPMH_CXO_CLK>;
@@ -1756,6 +1767,8 @@
 		qcom,pet-time = <9360>;
 		qcom,ipi-ping;
 		qcom,wakeup-enable;
+
+		status = "disabled";
 	};
 
 	qcom,turing@8300000 {
@@ -2105,6 +2118,7 @@
 		reg-names = "llcc_base";
 		qcom,llcc-banks-off = <0x0 0x80000 0x100000 0x180000>;
 		qcom,llcc-broadcast-off = <0x200000>;
+		status = "disabled";
 
 		llcc: qcom,sdm845-llcc {
 			compatible = "qcom,sdm845-llcc";
@@ -2673,6 +2687,8 @@
 			<0 311 0>,
 			<0 432 0>;
 		interrupt-names = "ipa-irq", "gsi-irq";
+		status = "disabled";
+
 		qcom,ipa-hw-ver = <13>; /* IPA core version = IPAv3.5.1 */
 		qcom,ipa-hw-mode = <0>;
 		qcom,ee = <0>;
@@ -4268,7 +4284,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&aoss0_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&aoss0_trip>;
@@ -4326,7 +4342,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpu0_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpu0_trip>;
@@ -4384,7 +4400,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpu1_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpu1_trip>;
@@ -4442,7 +4458,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpu2_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpu2_trip>;
@@ -4500,7 +4516,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpu3_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpu3_trip>;
@@ -4558,7 +4574,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&l3_0_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&l3_0_trip>;
@@ -4616,7 +4632,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&l3_1_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&l3_1_trip>;
@@ -4674,7 +4690,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpug0_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpug0_trip>;
@@ -4732,7 +4748,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpug1_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpug1_trip>;
@@ -4790,7 +4806,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpug2_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpug2_trip>;
@@ -4848,7 +4864,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&cpug3_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&cpug3_trip>;
@@ -4906,7 +4922,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&gpu0_trip_l>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&gpu0_trip_l>;
@@ -4964,7 +4980,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&gpu1_trip_l>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&gpu1_trip_l>;
@@ -5022,7 +5038,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&aoss1_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&aoss1_trip>;
@@ -5080,7 +5096,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&dsp_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&dsp_trip>;
@@ -5138,7 +5154,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&ddr_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&ddr_trip>;
@@ -5196,7 +5212,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&wlan_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&wlan_trip>;
@@ -5254,7 +5270,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&hvx_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&hvx_trip>;
@@ -5312,7 +5328,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&camera_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&camera_trip>;
@@ -5370,7 +5386,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&mmss_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&mmss_trip>;
@@ -5428,7 +5444,7 @@
 			};
 			mx_vdd_cdev {
 				trip = <&mdm_trip>;
-				cooling-device = <&mx_cdev 0 0>;
+				cooling-device = <&cx_cdev 0 0>;
 			};
 			ebi_vdd_cdev {
 				trip = <&mdm_trip>;

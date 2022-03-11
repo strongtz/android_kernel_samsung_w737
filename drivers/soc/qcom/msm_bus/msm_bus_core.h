@@ -22,7 +22,7 @@
 #include <linux/msm-bus.h>
 
 #define MSM_BUS_DBG(msg, ...) \
-	pr_debug(msg, ## __VA_ARGS__)
+	pr_info(msg, ## __VA_ARGS__)
 #define MSM_BUS_ERR(msg, ...) \
 	pr_err(msg, ## __VA_ARGS__)
 #define MSM_BUS_WARN(msg, ...) \

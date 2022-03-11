@@ -303,9 +303,9 @@ static int aop_qmp_clk_probe(struct platform_device *pdev)
 	 * Proxy vote on the QDSS clock. This is needed to avoid issues with
 	 * excessive requests on the QMP layer during the QDSS driver probe.
 	 */
-	ret = clk_aop_qmp_prepare(&qdss_qmp_clk.hw);
-	if (ret < 0)
-		goto fail;
+	// ret = clk_aop_qmp_prepare(&qdss_qmp_clk.hw);
+	// if (ret < 0)
+	// 	goto fail;
 
 	for (i = 0; i < num_clks; i++) {
 		if (!aop_qmp_clk_hws[i])
